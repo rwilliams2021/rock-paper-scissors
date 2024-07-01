@@ -2,7 +2,7 @@ package org.game.model;
 
 import org.game.enums.HandSymbol;
 import org.game.enums.Outcome;
-import org.game.enums.constants.Constants;
+import org.game.constants.Constants;
 
 import java.util.Scanner;
 

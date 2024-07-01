@@ -1,4 +1,4 @@
-package org.game.enums.constants;
+package org.game.constants;
 
 public class Constants {
     public static final String YES = "y";
