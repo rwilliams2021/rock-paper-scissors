@@ -1,13 +1,20 @@
 package org.game.model;
 
-import org.game.enums.HandSymbol;
+import org.game.enums.Symbol;
 
 import java.util.Random;
 
-public class Computer {
-    public HandSymbol generateRandomSymbol() {
+public class Computer implements Player {
+    
+    @Override
+    public String getName() {
+        return "Computer";
+    }
+    
+    @Override
+    public Symbol chooseSymbol() {
         Random random = new Random();
-        HandSymbol[] symbols = HandSymbol.values();
+        Symbol[] symbols = Symbol.values();
         int index = random.nextInt(symbols.length);
         return symbols[index];
     }

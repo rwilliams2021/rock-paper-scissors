@@ -1,35 +1,25 @@
 package org.game.model;
 
-import org.game.enums.HandSymbol;
+import org.game.enums.Symbol;
 import org.game.enums.Outcome;
 import org.game.constants.Constants;
-
-import java.util.Scanner;
+import org.game.utils.InputUtil;
 
 public class Game {
-    private final Scanner input;
-    private final Computer computer;
+    private final Player computer;
+    private final Player user;
     
     public Game() {
-        input = new Scanner(System.in);
         computer = new Computer();
-        welcome();
+        user = new User();
     }
     
     public void play() {
+        welcome(user.getName());
         do {
-            System.out.println(Constants.CHOOSE_SYMBOL);
-            HandSymbol userSymbol;
-            do {
-                String userChoice = input.nextLine().toLowerCase();
-                userSymbol = HandSymbol.fromStringSymbol(userChoice);
-                if (userSymbol == null) {
-                    System.out.println(Constants.INVALID_SYMBOL);
-                }
-            }
-            while (userSymbol == null);
-            
-            HandSymbol computerSymbol = computer.generateRandomSymbol();
+
+            Symbol userSymbol = user.chooseSymbol();
+            Symbol computerSymbol = computer.chooseSymbol();
             
             System.out.println("You chose: " + userSymbol + '\n' + "Computer chose: " + computerSymbol);
             
@@ -40,28 +30,26 @@ public class Game {
             printScore();
         } while (continuePlaying());
         goodbye();
+        InputUtil.closeScanner();
     }
     
     public void printScore() {
         System.out.println(Processor.getProcessor().getScoreUpdate());
     }
     
-    public void welcome() {
-        System.out.println("Enter your name: ");
-        String name = input.nextLine();
+    public void welcome(String name) {
         System.out.println("Hello " + name);
         System.out.println("Let's play Paper-Rock-Scissors!");
     }
     
     public void goodbye() {
-        System.out.println("Thanks for playing!");
+        System.out.println(Constants.GOODBYE_MSG);
     }
     
     public boolean continuePlaying() {
         String playOn;
         do {
-            System.out.println(Constants.PLAY_YES_OR_NO);
-            playOn = input.nextLine();
+            playOn = InputUtil.getUserInput(Constants.CONTINUE_PLAYING_MSG);
         } while (!playOn.equals(Constants.YES) && !playOn.equals(Constants.NO));
         return playOn.equals(Constants.YES);
     }

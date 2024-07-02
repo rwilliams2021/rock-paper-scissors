@@ -1,6 +1,6 @@
 package org.game.model;
 
-import org.game.enums.HandSymbol;
+import org.game.enums.Symbol;
 import org.game.enums.Outcome;
 
 public class Processor {
@@ -15,13 +15,13 @@ public class Processor {
     private int userWins = 0;
     private int computerWins = 0;
     
-    public Outcome getWinner(HandSymbol userSymbol, HandSymbol computerSymbol) {
+    public Outcome getWinner(Symbol userSymbol, Symbol computerSymbol) {
         if (userSymbol == computerSymbol) {
             return Outcome.DRAW;
         }
-        if (userSymbol == HandSymbol.ROCK && computerSymbol == HandSymbol.SCISSORS
-                || userSymbol == HandSymbol.PAPER && computerSymbol == HandSymbol.ROCK
-                || userSymbol == HandSymbol.SCISSORS && computerSymbol == HandSymbol.PAPER) {
+        if (userSymbol == Symbol.ROCK && computerSymbol == Symbol.SCISSORS
+                || userSymbol == Symbol.PAPER && computerSymbol == Symbol.ROCK
+                || userSymbol == Symbol.SCISSORS && computerSymbol == Symbol.PAPER) {
             userWins++;
             return Outcome.USER_WIN;
         }

@@ -1,14 +1,14 @@
 package org.game.enums;
 
 
-public enum HandSymbol {
+public enum Symbol {
     PAPER("paper"),
     SCISSORS("scissors"),
     ROCK("rock");
 
     private final String symbol;
 
-    HandSymbol(String symbol) {
+    Symbol(String symbol) {
         this.symbol = symbol;
     }
     
@@ -16,8 +16,8 @@ public enum HandSymbol {
         return symbol;
     }
     
-    public static HandSymbol fromStringSymbol(String stringSymbol) {
-        for (HandSymbol handSymbol : values()) {
+    public static Symbol fromStringSymbol(String stringSymbol) {
+        for (Symbol handSymbol : values()) {
             if (handSymbol.getSymbol().equalsIgnoreCase(stringSymbol)) {
                 return handSymbol;
             }
