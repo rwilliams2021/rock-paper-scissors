@@ -8,31 +8,38 @@ import java.util.Scanner;
 
 public class Game {
     private final Scanner input;
+    private final Computer computer;
     
     public Game() {
         input = new Scanner(System.in);
+        computer = new Computer();
+        welcome();
     }
     
     public void play() {
-        System.out.println(Constants.CHOOSE_SYMBOL);
-        HandSymbol userSymbol;
         do {
-            String userChoice = input.nextLine().toLowerCase();
-            userSymbol = HandSymbol.fromStringSymbol(userChoice);
-            if (userSymbol == null) {
-                System.out.println(Constants.INVALID_SYMBOL);
+            System.out.println(Constants.CHOOSE_SYMBOL);
+            HandSymbol userSymbol;
+            do {
+                String userChoice = input.nextLine().toLowerCase();
+                userSymbol = HandSymbol.fromStringSymbol(userChoice);
+                if (userSymbol == null) {
+                    System.out.println(Constants.INVALID_SYMBOL);
+                }
             }
-        }
-        while (userSymbol == null);
-        
-        Computer computer = new Computer();
-        HandSymbol computerSymbol = computer.generateRandomSymbol();
-        
-        System.out.println("You chose: " + userSymbol + '\n' + "Computer chose: " + computerSymbol);
-        
-        Outcome outcome = Processor.getProcessor().getWinner(userSymbol, computerSymbol);
-        
-        System.out.println(outcome.getMessage());
+            while (userSymbol == null);
+            
+            HandSymbol computerSymbol = computer.generateRandomSymbol();
+            
+            System.out.println("You chose: " + userSymbol + '\n' + "Computer chose: " + computerSymbol);
+            
+            Outcome outcome = Processor.getProcessor().getWinner(userSymbol, computerSymbol);
+            
+            System.out.println(outcome.getMessage());
+            
+            printScore();
+        } while (continuePlaying());
+        goodbye();
     }
     
     public void printScore() {
