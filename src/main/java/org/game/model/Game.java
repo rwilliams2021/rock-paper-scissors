@@ -3,18 +3,34 @@ package org.game.model;
 import org.game.enums.Symbol;
 import org.game.enums.Outcome;
 import org.game.constants.Constants;
-import org.game.utils.InputUtil;
+import org.game.utils.InputProvider;
+import org.game.utils.ScannerInputProvider;
+
+import java.util.Scanner;
 
 public class Game {
-    private final Player computer = new Computer();
-    private final Player user = new User();
-    private final Processor processor = Processor.getProcessor();
-    private final ScoreManager scoreManager = new ScoreManager();
+    private final InputProvider inputProvider;
+    private final Player computer;
+    private final Player user;
+    private final Processor processor;
+    private final ScoreManager scoreManager;
+    
+    public Game() {
+        this.inputProvider = new ScannerInputProvider(new Scanner(System.in));
+        this.computer = new Computer();
+        this.user = new User(inputProvider);
+        this.processor = Processor.getProcessor();
+        this.scoreManager = new ScoreManager();
+    }
     
     public void play() {
         welcome(user.getName());
         do {
             Symbol userSymbol = user.chooseSymbol();
+            while (userSymbol == null) {
+                System.out.println(Constants.INVALID_SYMBOL_MSG);
+                userSymbol = user.chooseSymbol();
+            }
             Symbol computerSymbol = computer.chooseSymbol();
             
             System.out.println(Constants.USER_CHOICE + userSymbol + '\n' + Constants.COMPUTER_CHOICE + computerSymbol);
@@ -27,7 +43,6 @@ public class Game {
             printScore();
         } while (continuePlaying());
         goodbye();
-        InputUtil.closeScanner();
     }
     
     public void printScore() {
@@ -41,12 +56,13 @@ public class Game {
     
     public void goodbye() {
         System.out.println(Constants.GOODBYE_MSG);
+        inputProvider.close();
     }
     
     public boolean continuePlaying() {
         String playOn;
         do {
-            playOn = InputUtil.getUserInput(Constants.CONTINUE_PLAYING_MSG);
+            playOn = inputProvider.getInput(Constants.CONTINUE_PLAYING_MSG);
         } while (!playOn.equals(Constants.YES) && !playOn.equals(Constants.NO));
         return playOn.equals(Constants.YES);
     }

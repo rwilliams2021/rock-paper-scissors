@@ -23,6 +23,6 @@ public enum Symbol {
                 return handSymbol;
             }
         }
-        throw new IllegalArgumentException(Constants.INVALID_SYMBOL_MSG);
+        return null;
     }
 }
