@@ -7,6 +7,9 @@ import org.game.exceptions.QuitGameException;
 import org.game.model.player.Player;
 import org.game.view.InputProvider;
 
+/**
+ * Class containing the game logic for Rock-Paper-Scissors.
+ */
 public class Game {
     private final InputProvider inputProvider;
     private final Player computer;
@@ -22,6 +25,9 @@ public class Game {
         this.scoreManager = scoreManager;
     }
     
+    /**
+     * Main game loop. Plays the specified number of rounds.
+     */
     public void play() {
         welcome(user.getName());
         int numberOfRounds = getNumberOfRounds();
@@ -46,6 +52,10 @@ public class Game {
         System.out.println(Constants.TEXT_LINE_SEPARATOR);
     }
     
+    /**
+     * Plays a single round of the game.
+     * @throws QuitGameException if the user decides to quit.
+     */
     public void playRound() throws QuitGameException {
 
         Symbol userSymbol = getUserSymbol();
@@ -59,6 +69,12 @@ public class Game {
         printScore();
     }
     
+    /**
+     * Prints the result of the round based on the outcome.
+     * @param outcome The outcome of the round.
+     * @param userSymbol The user's chosen symbol.
+     * @param computerSymbol The computer's chosen symbol.
+     */
     private void printResult(Outcome outcome, Symbol userSymbol, Symbol computerSymbol) {
         switch (outcome) {
             case USER_WIN:
@@ -81,14 +97,29 @@ public class Game {
         System.out.println(outcome.getMessage());
     }
     
+    /**
+     * Determines the outcome of a round.
+     * @param userSymbol The user's chosen symbol.
+     * @param computerSymbol The computer's chosen symbol.
+     * @return The outcome of the round.
+     */
     private Outcome determineOutcome(Symbol userSymbol, Symbol computerSymbol) {
         return processor.determineWinner(userSymbol, computerSymbol);
     }
     
+    /**
+     * Prints the choices of both the user and the computer.
+     * @param userSymbol The user's chosen symbol.
+     * @param computerSymbol The computer's chosen symbol.
+     */
     private void printChoices(Symbol userSymbol, Symbol computerSymbol) {
         System.out.println(Constants.USER_CHOICE + userSymbol + '\n' + Constants.COMPUTER_CHOICE + computerSymbol);
     }
     
+    /**
+     * Prompts the user to enter the number of rounds to play.
+     * @return The number of rounds to play.
+     */
     public int getNumberOfRounds() {
         int numberOfGames;
         while (true) {
@@ -106,6 +137,11 @@ public class Game {
         return numberOfGames;
     }
     
+    /**
+     * Prompts the user to enter their symbol choice.
+     * @return The user's chosen symbol.
+     * @throws QuitGameException if the user decides to quit.
+     */
     public Symbol getUserSymbol() throws QuitGameException {
         Symbol userSymbol = user.chooseSymbol();
         while (userSymbol == null) {
@@ -115,15 +151,25 @@ public class Game {
         return userSymbol;
     }
     
+    /**
+     * Prints the current score of the user and the computer.
+     */
     public void printScore() {
         System.out.println(Constants.USER_NUM_WINS + user.getWins() + "\n" + Constants.COMPUTER_NUM_WINS + computer.getWins());
     }
     
+    /**
+     * Prints a welcome message to the user.
+     * @param name The name of the user.
+     */
     public void welcome(String name) {
         System.out.println("Hello " + name);
         System.out.println("Let's play Paper-Rock-Scissors!");
     }
     
+    /**
+     * Prints a goodbye message when the game ends.
+     */
     public void goodbye() {
         System.out.println(Constants.GOODBYE_MSG);
     }
