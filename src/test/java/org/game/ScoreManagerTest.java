@@ -6,7 +6,6 @@ import org.game.model.Player;
 import org.game.model.ScoreManager;
 import org.game.model.User;
 import org.game.utils.ScannerInputProvider;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
@@ -15,16 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ScoreManagerTest {
     public static final String USER_NAME = "SomeName";
-    private ScoreManager scoreManager;
-    private Player user;
-    private Player computer;
-
-    @BeforeEach
-    public void setUp() {
-        scoreManager = new ScoreManager();
-        user = new User(USER_NAME, new ScannerInputProvider(new Scanner(System.in)));
-        computer = new Computer();
-    }
+    private final ScoreManager scoreManager = new ScoreManager();
+    private final Player user = new User(USER_NAME, new ScannerInputProvider(new Scanner(System.in)));
+    private final Player computer = new Computer();
 
     @Test
     public void testUpdateScore() {

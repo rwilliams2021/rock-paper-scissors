@@ -10,12 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ComputerTest {
-    private Computer computer;
-    
-    @BeforeEach
-    public void setUp() {
-        computer = new Computer();
-    }
+    private final Computer computer = new Computer();
     
     @Test
     public void testChooseSymbol() {
