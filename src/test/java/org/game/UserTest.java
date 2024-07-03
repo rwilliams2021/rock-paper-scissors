@@ -14,7 +14,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class UserTest {
-    private static final String INVALID_SYMBOL = "invalid";
     public static final String USER_NAME = "TestUser";
     private final InputProvider inputProvider = mock(InputProvider.class);
     private User user;
