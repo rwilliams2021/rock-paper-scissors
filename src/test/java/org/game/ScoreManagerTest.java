@@ -15,6 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * Unit tests for the ScoreManager class, which manages the scores of the players.
+ */
 public class ScoreManagerTest {
     public static final String USER_NAME = "SomeName";
     private ScoreManager scoreManager;
@@ -30,6 +33,10 @@ public class ScoreManagerTest {
         user = new User(inputProvider);
     }
     
+    /**
+     * Tests that updateScore correctly handles a draw outcome.
+     * Ensures that the scores of both the user and the computer remain unchanged.
+     */
     @Test
     public void testUpdateScoreDraw() {
         scoreManager.updateScore(Outcome.DRAW, computer, user);
@@ -37,6 +44,9 @@ public class ScoreManagerTest {
         assertEquals(0, computer.getWins());
     }
     
+    /**
+     * Tests that updateScore correctly increments the user's score when the user wins.
+     */
     @Test
     public void testUpdateScoreUserWins() {
         scoreManager.updateScore(Outcome.USER_WIN, computer, user);
@@ -44,6 +54,9 @@ public class ScoreManagerTest {
         assertEquals(0, computer.getWins());
     }
     
+    /**
+     * Tests that updateScore correctly increments the computer's score when the computer wins.
+     */
     @Test
     public void testUpdateScoreComputerWins() {
         scoreManager.updateScore(Outcome.COMPUTER_WIN, computer, user);

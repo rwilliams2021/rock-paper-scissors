@@ -15,6 +15,9 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * Unit tests for the User class, which represents a human player in the game.
+ */
 public class UserTest {
     public static final String USER_NAME = "TestUser";
     private final InputProvider inputProvider = mock(InputProvider.class);
@@ -26,6 +29,9 @@ public class UserTest {
         user = new User(inputProvider);
     }
     
+    /**
+     * Tests that the User class correctly chooses a symbol when provided with valid input.
+     */
     @Test
     public void testChooseSymbol() {
         when(inputProvider.getInput(anyString())).thenReturn(Symbol.ROCK.name());
@@ -33,6 +39,10 @@ public class UserTest {
         assertEquals(Symbol.ROCK, symbol);
     }
     
+    /**
+     * Tests that the User class correctly handles the user choosing to quit.
+     * Ensures that chooseSymbol returns null when the user inputs the quit command.
+     */
     @Test
     public void testUserQuits() {
         when(inputProvider.getInput(anyString())).thenReturn(SymbolConstants.QUIT);

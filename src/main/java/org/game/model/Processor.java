@@ -15,6 +15,9 @@ public class Processor {
      * @return The outcome of the round.
      */
     public Outcome determineWinner(Symbol userSymbol, Symbol computerSymbol) {
+        if (userSymbol == null || computerSymbol == null) {
+            return null;
+        }
         if (userSymbol == computerSymbol) {
             return Outcome.DRAW;
         }

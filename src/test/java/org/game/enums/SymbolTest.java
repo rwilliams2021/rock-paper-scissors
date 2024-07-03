@@ -1,5 +1,6 @@
 package org.game.enums;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -39,6 +40,15 @@ public class SymbolTest {
     @ValueSource(strings = {INVALID_SYMBOL, ""})
     public void testFromStringSymbolInvalid(String strSymbol) {
         Symbol symbol = Symbol.fromStringSymbol(strSymbol);
+        assertNull(symbol);
+    }
+    
+    /**
+     * Tests that fromStringSymbol returns null when given a null input.
+     */
+    @Test
+    public void testFromStringSymbolNull() {
+        Symbol symbol = Symbol.fromStringSymbol(null);
         assertNull(symbol);
     }
 }
