@@ -1,13 +1,19 @@
 package org.game.model.player;
 
 import org.game.enums.Symbol;
-import org.game.exceptions.QuitGameException;
 
+/**
+ * Abstract class representing a player in the game.
+ */
 public abstract class Player {
     protected String name;
     protected int wins;
     
-    public abstract Symbol chooseSymbol() throws QuitGameException;
+    /**
+     * Method to choose a symbol for the player.
+     * @return The chosen symbol.
+     */
+    public abstract Symbol chooseSymbol();
     
     public String getName() {
         return name;

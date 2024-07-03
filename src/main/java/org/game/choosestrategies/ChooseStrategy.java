@@ -1,8 +1,10 @@
 package org.game.choosestrategies;
 
 import org.game.enums.Symbol;
-import org.game.exceptions.QuitGameException;
 
+/**
+ * Strategy interface for choosing a symbol.
+ */
 public interface ChooseStrategy {
-    Symbol chooseSymbol() throws QuitGameException;
+    Symbol chooseSymbol();
 }

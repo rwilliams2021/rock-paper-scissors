@@ -4,6 +4,9 @@ import org.game.enums.Symbol;
 
 import java.util.Random;
 
+/**
+ * Strategy for randomly choosing a symbol for the computer player.
+ */
 public class RandomChooseStrategy implements ChooseStrategy {
     
     @Override

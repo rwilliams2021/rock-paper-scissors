@@ -2,10 +2,12 @@ package org.game.model.player;
 
 import org.game.constants.Constants;
 import org.game.enums.Symbol;
-import org.game.exceptions.QuitGameException;
 import org.game.choosestrategies.UserChooseStrategy;
 import org.game.view.InputProvider;
 
+/**
+ * Represents the user player.
+ */
 public class User extends Player {
     
     private final InputProvider inputProvider;
@@ -16,7 +18,7 @@ public class User extends Player {
     }
     
     @Override
-    public Symbol chooseSymbol() throws QuitGameException {
+    public Symbol chooseSymbol() {
         return new UserChooseStrategy(inputProvider).chooseSymbol();
     }
 }

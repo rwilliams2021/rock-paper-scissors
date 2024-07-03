@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.game.enums.Symbol;
 import org.game.enums.Outcome;
 import org.game.constants.Constants;
-import org.game.exceptions.QuitGameException;
 import org.game.view.InputProvider;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -68,26 +67,7 @@ public class GameTest {
     }
     
     @Test
-    void testGetUserSymbol() throws QuitGameException {
-        when(user.chooseSymbol()).thenReturn(Symbol.ROCK);
-        
-        Symbol symbol = game.getUserSymbol();
-        
-        assertEquals(Symbol.ROCK, symbol);
-    }
-    
-    @Test
-    void testGetUserSymbolWithNullSymbol() throws QuitGameException {
-        when(user.chooseSymbol()).thenReturn(null, Symbol.PAPER);
-        
-        Symbol symbol = game.getUserSymbol();
-        
-        assertEquals(Symbol.PAPER, symbol);
-        verify(user, times(2)).chooseSymbol();
-    }
-    
-    @Test
-    void testPlayRound() throws QuitGameException {
+    void testPlayRound() {
         when(user.chooseSymbol()).thenReturn(Symbol.ROCK);
         when(computer.chooseSymbol()).thenReturn(Symbol.SCISSORS);
         when(processor.determineWinner(Symbol.ROCK, Symbol.SCISSORS)).thenReturn(Outcome.USER_WIN);
@@ -101,7 +81,7 @@ public class GameTest {
     }
     
     @Test
-    void testPlay() throws QuitGameException {
+    void testPlay() {
         when(user.getName()).thenReturn(USER_NAME);
         when(inputProvider.getInput(anyString())).thenReturn(ONE_ROUND);
         when(user.chooseSymbol()).thenReturn(Symbol.ROCK);

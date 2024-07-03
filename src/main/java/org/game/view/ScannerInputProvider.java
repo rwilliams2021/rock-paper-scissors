@@ -2,6 +2,9 @@ package org.game.view;
 
 import java.util.Scanner;
 
+/**
+ * Implementation of InputProvider that uses Scanner for user input.
+ */
 public class ScannerInputProvider implements InputProvider {
     private final Scanner scanner;
     

@@ -3,7 +3,6 @@ package org.game.model;
 import org.game.enums.Symbol;
 import org.game.enums.Outcome;
 import org.game.constants.Constants;
-import org.game.exceptions.QuitGameException;
 import org.game.model.player.Player;
 import org.game.view.InputProvider;
 
@@ -32,10 +31,8 @@ public class Game {
         welcome(user.getName());
         int numberOfRounds = getNumberOfRounds();
         for (int roundNum = 0; roundNum < numberOfRounds; roundNum++) {
-            try {
-                printRoundMessage(roundNum+1, numberOfRounds);
-                playRound();
-            } catch (QuitGameException e) {
+            printRoundMessage(roundNum + 1, numberOfRounds);
+            if(!playRound()) {
                 break;
             }
         }
@@ -44,7 +41,7 @@ public class Game {
     
     private void printRoundMessage(int roundNum, int numberOfRounds) {
         System.out.println(Constants.TEXT_LINE_SEPARATOR);
-        if(roundNum == numberOfRounds) {
+        if (roundNum == numberOfRounds) {
             System.out.println(Constants.FINAL_ROUND_MSG);
         } else {
             System.out.println(Constants.ROUND_NUMBER_MSG + roundNum);
@@ -54,11 +51,13 @@ public class Game {
     
     /**
      * Plays a single round of the game.
-     * @throws QuitGameException if the user decides to quit.
      */
-    public void playRound() throws QuitGameException {
-
-        Symbol userSymbol = getUserSymbol();
+    public boolean playRound() {
+        
+        Symbol userSymbol = user.chooseSymbol();
+        if (userSymbol == null) {
+            return false;
+        }
         Symbol computerSymbol = computer.chooseSymbol();
         printChoices(userSymbol, computerSymbol);
         
@@ -67,10 +66,12 @@ public class Game {
         
         scoreManager.updateScore(outcome, computer, user);
         printScore();
+        return true;
     }
     
     /**
      * Prints the result of the round based on the outcome.
+     *
      * @param outcome The outcome of the round.
      * @param userSymbol The user's chosen symbol.
      * @param computerSymbol The computer's chosen symbol.
@@ -99,6 +100,7 @@ public class Game {
     
     /**
      * Determines the outcome of a round.
+     *
      * @param userSymbol The user's chosen symbol.
      * @param computerSymbol The computer's chosen symbol.
      * @return The outcome of the round.
@@ -109,6 +111,7 @@ public class Game {
     
     /**
      * Prints the choices of both the user and the computer.
+     *
      * @param userSymbol The user's chosen symbol.
      * @param computerSymbol The computer's chosen symbol.
      */
@@ -118,6 +121,7 @@ public class Game {
     
     /**
      * Prompts the user to enter the number of rounds to play.
+     *
      * @return The number of rounds to play.
      */
     public int getNumberOfRounds() {
@@ -138,20 +142,6 @@ public class Game {
     }
     
     /**
-     * Prompts the user to enter their symbol choice.
-     * @return The user's chosen symbol.
-     * @throws QuitGameException if the user decides to quit.
-     */
-    public Symbol getUserSymbol() throws QuitGameException {
-        Symbol userSymbol = user.chooseSymbol();
-        while (userSymbol == null) {
-            System.out.println(Constants.INVALID_SYMBOL_MSG);
-            userSymbol = user.chooseSymbol();
-        }
-        return userSymbol;
-    }
-    
-    /**
      * Prints the current score of the user and the computer.
      */
     public void printScore() {
@@ -160,6 +150,7 @@ public class Game {
     
     /**
      * Prints a welcome message to the user.
+     *
      * @param name The name of the user.
      */
     public void welcome(String name) {
