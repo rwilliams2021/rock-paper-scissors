@@ -14,9 +14,4 @@ public class ScannerInputProvider implements InputProvider {
         System.out.println(prompt);
         return scanner.nextLine();
     }
-    
-    @Override
-    public void close() {
-        scanner.close();
-    }
 }

@@ -3,12 +3,18 @@ package org.game;
 import org.game.enums.Outcome;
 import org.game.enums.Symbol;
 import org.game.model.Processor;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProcessorTest {
-    Processor processor = Processor.getProcessor();
+    private Processor processor;
+    
+    @BeforeEach
+    public void setUp() {
+        processor = new Processor();
+    }
     
     @Test
     public void testDetermineWinnerDraw() {

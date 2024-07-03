@@ -15,14 +15,15 @@ public class SymbolTest {
     public static final String INVALID_SYMBOL = "invalid";
     
     @ParameterizedTest
-    @ValueSource(strings = {"rock", "scissors", "paper"})
+    @ValueSource(strings = {ROCK, SCISSORS, PAPER})
     public void testFromStringSymbolValid(String symbol) {
         assertEquals(Symbol.valueOf(symbol.toUpperCase()), Symbol.fromStringSymbol(symbol));
     }
 
-    @Test
-    public void testFromStringSymbolInvalid() {
-        Symbol symbol = Symbol.fromStringSymbol(INVALID_SYMBOL);
+    @ParameterizedTest
+    @ValueSource(strings = {INVALID_SYMBOL, ""})
+    public void testFromStringSymbolInvalid(String strSymbol) {
+        Symbol symbol = Symbol.fromStringSymbol(strSymbol);
         assertNull(symbol);
     }
 }

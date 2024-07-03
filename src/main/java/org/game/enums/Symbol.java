@@ -1,16 +1,16 @@
 package org.game.enums;
 
-import org.game.constants.Constants;
-
 public enum Symbol {
-    PAPER("paper"),
-    SCISSORS("scissors"),
-    ROCK("rock");
+    PAPER("paper", "wraps"),
+    SCISSORS("scissors", "cuts"),
+    ROCK("rock", "blunts");
 
     private final String symbol;
+    private final String winAction;
 
-    Symbol(String symbol) {
+    Symbol(String symbol, String winAction) {
         this.symbol = symbol;
+        this.winAction = winAction;
     }
     
     public String getSymbol() {
@@ -24,5 +24,9 @@ public enum Symbol {
             }
         }
         return null;
+    }
+    
+    public static String getWinAction(Symbol symbol) {
+        return symbol.winAction;
     }
 }

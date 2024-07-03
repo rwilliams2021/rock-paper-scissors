@@ -19,14 +19,16 @@ import static org.mockito.Mockito.when;
 
 public class ScoreManagerTest {
     public static final String USER_NAME = "SomeName";
-    private final ScoreManager scoreManager = new ScoreManager();
+    private ScoreManager scoreManager;
     private Player user;
-    private final Player computer = new Computer();
+    private Player computer;
     
     @BeforeEach
     public void setUp() {
+        scoreManager = new ScoreManager();
+        computer = new Computer();
         InputProvider inputProvider = mock(InputProvider.class);
-        when(inputProvider.getInput(Constants.ENTER_NAME_MSG)).thenReturn( USER_NAME);
+        when(inputProvider.getInput(Constants.ENTER_NAME_MSG)).thenReturn(USER_NAME);
         user = new User(inputProvider);
     }
     
