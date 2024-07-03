@@ -1,6 +1,6 @@
 package org.game.model.player;
 
-import org.game.constants.Constants;
+import org.game.constants.MessageConstants;
 import org.game.enums.Symbol;
 import org.game.choosestrategies.UserChooseStrategy;
 import org.game.view.InputProvider;
@@ -14,7 +14,7 @@ public class User extends Player {
     
     public User(InputProvider inputProvider) {
         this.inputProvider = inputProvider;
-        name = inputProvider.getInput(Constants.ENTER_NAME_MSG);
+        name = inputProvider.getInput(MessageConstants.ENTER_NAME_MSG);
     }
     
     @Override

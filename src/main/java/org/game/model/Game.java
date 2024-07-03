@@ -1,8 +1,8 @@
 package org.game.model;
 
+import org.game.constants.MessageConstants;
 import org.game.enums.Symbol;
 import org.game.enums.Outcome;
-import org.game.constants.Constants;
 import org.game.model.player.Player;
 import org.game.view.InputProvider;
 
@@ -32,7 +32,7 @@ public class Game {
         int numberOfRounds = getNumberOfRounds();
         for (int roundNum = 0; roundNum < numberOfRounds; roundNum++) {
             printRoundMessage(roundNum + 1, numberOfRounds);
-            if(!playRound()) {
+            if (!playRound()) {
                 break;
             }
         }
@@ -40,13 +40,13 @@ public class Game {
     }
     
     private void printRoundMessage(int roundNum, int numberOfRounds) {
-        System.out.println(Constants.TEXT_LINE_SEPARATOR);
+        System.out.println(MessageConstants.TEXT_LINE_SEPARATOR);
         if (roundNum == numberOfRounds) {
-            System.out.println(Constants.FINAL_ROUND_MSG);
+            System.out.println(MessageConstants.FINAL_ROUND_MSG);
         } else {
-            System.out.println(Constants.ROUND_NUMBER_MSG + roundNum);
+            System.out.println(MessageConstants.ROUND_NUMBER_MSG + roundNum);
         }
-        System.out.println(Constants.TEXT_LINE_SEPARATOR);
+        System.out.println(MessageConstants.TEXT_LINE_SEPARATOR);
     }
     
     /**
@@ -116,7 +116,11 @@ public class Game {
      * @param computerSymbol The computer's chosen symbol.
      */
     private void printChoices(Symbol userSymbol, Symbol computerSymbol) {
-        System.out.println(Constants.USER_CHOICE + userSymbol + '\n' + Constants.COMPUTER_CHOICE + computerSymbol);
+        System.out.println(MessageConstants.USER_CHOICE +
+                           userSymbol +
+                           System.lineSeparator() +
+                           MessageConstants.COMPUTER_CHOICE +
+                           computerSymbol);
     }
     
     /**
@@ -128,14 +132,14 @@ public class Game {
         int numberOfGames;
         while (true) {
             try {
-                String input = inputProvider.getInput(Constants.NUMBER_OF_GAMES_MSG);
+                String input = inputProvider.getInput(MessageConstants.NUMBER_OF_GAMES_MSG);
                 numberOfGames = Integer.parseInt(input);
                 if (numberOfGames > 0) {
                     break;
                 }
-                System.out.println(Constants.POSITIVE_NUMBER_MSG);
+                System.out.println(MessageConstants.NEGATIVE_NUMBER_MSG);
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println(MessageConstants.INVALID_NUMBER_MSG);
             }
         }
         return numberOfGames;
@@ -145,7 +149,11 @@ public class Game {
      * Prints the current score of the user and the computer.
      */
     public void printScore() {
-        System.out.println(Constants.USER_NUM_WINS + user.getWins() + "\n" + Constants.COMPUTER_NUM_WINS + computer.getWins());
+        System.out.println(MessageConstants.USER_NUM_WINS +
+                           user.getWins() +
+                           System.lineSeparator() +
+                           MessageConstants.COMPUTER_NUM_WINS +
+                           computer.getWins());
     }
     
     /**
@@ -154,14 +162,14 @@ public class Game {
      * @param name The name of the user.
      */
     public void welcome(String name) {
-        System.out.println("Hello " + name);
-        System.out.println("Let's play Paper-Rock-Scissors!");
+        System.out.println(MessageConstants.GREETING + name);
+        System.out.println(MessageConstants.BEGIN_GAME_MSG);
     }
     
     /**
      * Prints a goodbye message when the game ends.
      */
     public void goodbye() {
-        System.out.println(Constants.GOODBYE_MSG);
+        System.out.println(MessageConstants.GOODBYE_MSG);
     }
 }

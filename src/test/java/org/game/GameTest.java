@@ -1,5 +1,6 @@
 package org.game;
 
+import org.game.constants.MessageConstants;
 import org.game.model.Game;
 import org.game.model.player.Player;
 import org.game.model.Processor;
@@ -63,7 +64,7 @@ public class GameTest {
         when(inputProvider.getInput(anyString())).thenReturn(INVALID_INPUT_ROUNDS, ZERO_ROUNDS, VALID_ROUNDS);
         int rounds = game.getNumberOfRounds();
         assertEquals(2, rounds);
-        verify(inputProvider, times(3)).getInput(Constants.NUMBER_OF_GAMES_MSG);
+        verify(inputProvider, times(3)).getInput(MessageConstants.NUMBER_OF_GAMES_MSG);
     }
     
     @Test
@@ -90,7 +91,7 @@ public class GameTest {
         
         game.play();
         
-        verify(inputProvider, times(1)).getInput(Constants.NUMBER_OF_GAMES_MSG);
+        verify(inputProvider, times(1)).getInput(MessageConstants.NUMBER_OF_GAMES_MSG);
         verify(user, times(1)).chooseSymbol();
         verify(computer, times(1)).chooseSymbol();
         verify(processor, times(1)).determineWinner(Symbol.ROCK, Symbol.SCISSORS);

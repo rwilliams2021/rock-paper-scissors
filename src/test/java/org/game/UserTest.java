@@ -1,6 +1,8 @@
 package org.game;
 
 import org.game.constants.Constants;
+import org.game.constants.MessageConstants;
+import org.game.constants.SymbolConstants;
 import org.game.enums.Symbol;
 import org.game.model.player.User;
 import org.game.view.InputProvider;
@@ -20,7 +22,7 @@ public class UserTest {
     
     @BeforeEach
     public void setUp() {
-        when(inputProvider.getInput(Constants.ENTER_NAME_MSG)).thenReturn(USER_NAME);
+        when(inputProvider.getInput(MessageConstants.ENTER_NAME_MSG)).thenReturn(USER_NAME);
         user = new User(inputProvider);
     }
     
@@ -33,7 +35,7 @@ public class UserTest {
     
     @Test
     public void testUserQuits() {
-        when(inputProvider.getInput(anyString())).thenReturn(Constants.QUIT);
+        when(inputProvider.getInput(anyString())).thenReturn(SymbolConstants.QUIT);
         assertNull(user.chooseSymbol());
     }
 }
