@@ -1,6 +1,8 @@
 package org.game.constants;
 
 public class Constants {
+    public static final String COMPUTER = "computer";
+    public static final String USER = "user";
     public static final String ENTER_NAME_MSG = "Enter your name: ";
     public static final String CHOOSE_SYMBOL_MSG = "Enter your choice: rock, paper or scissors? ('q' to quit)";
     public static final String INVALID_SYMBOL_MSG = "Invalid choice. Only 'rock', 'paper' and 'scissors' are allowed.";

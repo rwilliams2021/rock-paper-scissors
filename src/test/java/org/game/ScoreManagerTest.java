@@ -2,16 +2,13 @@ package org.game;
 
 import org.game.constants.Constants;
 import org.game.enums.Outcome;
-import org.game.model.Computer;
-import org.game.model.Player;
+import org.game.model.player.Computer;
+import org.game.model.player.Player;
 import org.game.model.ScoreManager;
-import org.game.model.User;
+import org.game.model.player.User;
 import org.game.utils.InputProvider;
-import org.game.utils.ScannerInputProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;

@@ -1,7 +1,7 @@
 package org.game;
 
 import org.game.model.Game;
-import org.game.model.Player;
+import org.game.model.player.Player;
 import org.game.model.Processor;
 import org.game.model.ScoreManager;
 import org.junit.jupiter.api.BeforeEach;

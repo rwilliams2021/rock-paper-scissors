@@ -1,10 +1,10 @@
-package org.game.model;
+package org.game.model.choosestrategy;
 
 import org.game.enums.Symbol;
 
 import java.util.Random;
 
-public class Computer extends Player {
+public class RandomChooseStrategy implements ChooseStrategy {
     
     @Override
     public Symbol chooseSymbol() {

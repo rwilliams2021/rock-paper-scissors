@@ -1,4 +1,4 @@
-package org.game.model;
+package org.game.model.player;
 
 import org.game.enums.Symbol;
 import org.game.exceptions.QuitGameException;

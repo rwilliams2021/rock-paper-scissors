@@ -1,7 +1,7 @@
 package org.game;
 
 import org.game.enums.Symbol;
-import org.game.model.Computer;
+import org.game.model.player.Computer;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

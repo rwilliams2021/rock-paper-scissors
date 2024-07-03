@@ -1,6 +1,8 @@
 package org.game;
 
 import org.game.model.*;
+import org.game.model.player.Computer;
+import org.game.model.player.User;
 import org.game.utils.ScannerInputProvider;
 
 import java.util.Scanner;
