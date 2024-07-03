@@ -4,14 +4,6 @@ import org.game.enums.Symbol;
 import org.game.enums.Outcome;
 
 public class Processor {
-    private static final Processor processor = new Processor();
-    
-    private Processor() {
-    }
-    
-    public static Processor getProcessor() {
-        return processor;
-    }
     
     public Outcome determineWinner(Symbol userSymbol, Symbol computerSymbol) {
         if (userSymbol == computerSymbol) {
@@ -24,6 +16,4 @@ public class Processor {
         }
         return Outcome.COMPUTER_WIN;
     }
-    
-
 }
