@@ -15,8 +15,8 @@ public class Game {
     private final Processor processor;
     private final ScoreManager scoreManager;
     
-    public Game() {
-        this.inputProvider = new ScannerInputProvider(new Scanner(System.in));
+    public Game(InputProvider inputProvider) {
+        this.inputProvider = inputProvider;
         this.computer = new Computer();
         this.user = new User(inputProvider);
         this.processor = Processor.getProcessor();
@@ -26,11 +26,7 @@ public class Game {
     public void play() {
         welcome(user.getName());
         do {
-            Symbol userSymbol = user.chooseSymbol();
-            while (userSymbol == null) {
-                System.out.println(Constants.INVALID_SYMBOL_MSG);
-                userSymbol = user.chooseSymbol();
-            }
+            Symbol userSymbol = getUserSymbol();
             Symbol computerSymbol = computer.chooseSymbol();
             
             System.out.println(Constants.USER_CHOICE + userSymbol + '\n' + Constants.COMPUTER_CHOICE + computerSymbol);
@@ -43,6 +39,15 @@ public class Game {
             printScore();
         } while (continuePlaying());
         goodbye();
+    }
+    
+    private Symbol getUserSymbol() {
+        Symbol userSymbol = user.chooseSymbol();
+        while (userSymbol == null) {
+            System.out.println(Constants.INVALID_SYMBOL_MSG);
+            userSymbol = user.chooseSymbol();
+        }
+        return userSymbol;
     }
     
     public void printScore() {

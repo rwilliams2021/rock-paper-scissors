@@ -8,17 +8,26 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProcessorTest {
+    Processor processor = Processor.getProcessor();
     
     @Test
-    public void determineWinner() {
-        assertEquals(Outcome.DRAW, Processor.getProcessor().determineWinner(Symbol.ROCK, Symbol.ROCK));
-        assertEquals(Outcome.DRAW, Processor.getProcessor().determineWinner(Symbol.SCISSORS, Symbol.SCISSORS));
-        assertEquals(Outcome.DRAW, Processor.getProcessor().determineWinner(Symbol.PAPER, Symbol.PAPER));
-        assertEquals(Outcome.USER_WIN, Processor.getProcessor().determineWinner(Symbol.ROCK, Symbol.SCISSORS));
-        assertEquals(Outcome.USER_WIN, Processor.getProcessor().determineWinner(Symbol.SCISSORS, Symbol.PAPER));
-        assertEquals(Outcome.USER_WIN, Processor.getProcessor().determineWinner(Symbol.PAPER, Symbol.ROCK));
-        assertEquals(Outcome.COMPUTER_WIN, Processor.getProcessor().determineWinner(Symbol.ROCK, Symbol.PAPER));
-        assertEquals(Outcome.COMPUTER_WIN, Processor.getProcessor().determineWinner(Symbol.SCISSORS, Symbol.ROCK));
-        assertEquals(Outcome.COMPUTER_WIN, Processor.getProcessor().determineWinner(Symbol.PAPER, Symbol.SCISSORS));
+    public void testDetermineWinnerDraw() {
+        assertEquals(Outcome.DRAW, processor.determineWinner(Symbol.ROCK, Symbol.ROCK));
+        assertEquals(Outcome.DRAW, processor.determineWinner(Symbol.SCISSORS, Symbol.SCISSORS));
+        assertEquals(Outcome.DRAW, processor.determineWinner(Symbol.PAPER, Symbol.PAPER));
+    }
+    
+    @Test
+    public void testDetermineWinnerUserWins() {
+        assertEquals(Outcome.USER_WIN, processor.determineWinner(Symbol.ROCK, Symbol.SCISSORS));
+        assertEquals(Outcome.USER_WIN, processor.determineWinner(Symbol.SCISSORS, Symbol.PAPER));
+        assertEquals(Outcome.USER_WIN, processor.determineWinner(Symbol.PAPER, Symbol.ROCK));
+    }
+    
+    @Test
+    public void testDetermineWinnerComputerWins() {
+        assertEquals(Outcome.COMPUTER_WIN, processor.determineWinner(Symbol.ROCK, Symbol.PAPER));
+        assertEquals(Outcome.COMPUTER_WIN, processor.determineWinner(Symbol.SCISSORS, Symbol.ROCK));
+        assertEquals(Outcome.COMPUTER_WIN, processor.determineWinner(Symbol.PAPER, Symbol.SCISSORS));
     }
 }

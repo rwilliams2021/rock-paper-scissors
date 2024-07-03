@@ -1,6 +1,8 @@
 package org.game.enums;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -12,13 +14,12 @@ public class SymbolTest {
     public static final String PAPER = "paper";
     public static final String INVALID_SYMBOL = "invalid";
     
-    @Test
-    public void testFromStringSymbol() {
-        assertEquals(Symbol.ROCK, Symbol.fromStringSymbol(ROCK));
-        assertEquals(Symbol.SCISSORS, Symbol.fromStringSymbol(SCISSORS));
-        assertEquals(Symbol.PAPER, Symbol.fromStringSymbol(PAPER));
+    @ParameterizedTest
+    @ValueSource(strings = {"rock", "scissors", "paper"})
+    public void testFromStringSymbolValid(String symbol) {
+        assertEquals(Symbol.valueOf(symbol.toUpperCase()), Symbol.fromStringSymbol(symbol));
     }
-    
+
     @Test
     public void testFromStringSymbolInvalid() {
         Symbol symbol = Symbol.fromStringSymbol(INVALID_SYMBOL);
