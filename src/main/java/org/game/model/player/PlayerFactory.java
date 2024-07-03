@@ -1,7 +1,7 @@
 package org.game.model.player;
 
 import org.game.constants.Constants;
-import org.game.utils.InputProvider;
+import org.game.view.InputProvider;
 
 public class PlayerFactory {
     public static Player createPlayer(String type, InputProvider inputProvider) {

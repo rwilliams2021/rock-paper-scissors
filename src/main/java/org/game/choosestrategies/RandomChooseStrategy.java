@@ -1,4 +1,4 @@
-package org.game.model.choosestrategy;
+package org.game.choosestrategies;
 
 import org.game.enums.Symbol;
 

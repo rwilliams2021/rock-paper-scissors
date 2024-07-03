@@ -14,7 +14,7 @@ import org.game.enums.Symbol;
 import org.game.enums.Outcome;
 import org.game.constants.Constants;
 import org.game.exceptions.QuitGameException;
-import org.game.utils.InputProvider;
+import org.game.view.InputProvider;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.*;

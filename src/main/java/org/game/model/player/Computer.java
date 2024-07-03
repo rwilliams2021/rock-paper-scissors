@@ -1,7 +1,7 @@
 package org.game.model.player;
 
 import org.game.enums.Symbol;
-import org.game.model.choosestrategy.RandomChooseStrategy;
+import org.game.choosestrategies.RandomChooseStrategy;
 
 public class Computer extends Player {
     

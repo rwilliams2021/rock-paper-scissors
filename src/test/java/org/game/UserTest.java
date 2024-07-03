@@ -4,7 +4,7 @@ import org.game.constants.Constants;
 import org.game.enums.Symbol;
 import org.game.exceptions.QuitGameException;
 import org.game.model.player.User;
-import org.game.utils.InputProvider;
+import org.game.view.InputProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

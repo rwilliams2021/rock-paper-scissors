@@ -6,7 +6,7 @@ import org.game.model.player.Computer;
 import org.game.model.player.Player;
 import org.game.model.ScoreManager;
 import org.game.model.player.User;
-import org.game.utils.InputProvider;
+import org.game.view.InputProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -5,7 +5,7 @@ import org.game.enums.Outcome;
 import org.game.constants.Constants;
 import org.game.exceptions.QuitGameException;
 import org.game.model.player.Player;
-import org.game.utils.InputProvider;
+import org.game.view.InputProvider;
 
 public class Game {
     private final InputProvider inputProvider;
@@ -25,8 +25,9 @@ public class Game {
     public void play() {
         welcome(user.getName());
         int numberOfRounds = getNumberOfRounds();
-        for (int i = 0; i < numberOfRounds; i++) {
+        for (int roundNum = 0; roundNum < numberOfRounds; roundNum++) {
             try {
+                printRoundMessage(roundNum+1, numberOfRounds);
                 playRound();
             } catch (QuitGameException e) {
                 break;
@@ -35,7 +36,18 @@ public class Game {
         goodbye();
     }
     
+    private void printRoundMessage(int roundNum, int numberOfRounds) {
+        System.out.println(Constants.TEXT_LINE_SEPARATOR);
+        if(roundNum == numberOfRounds) {
+            System.out.println(Constants.FINAL_ROUND_MSG);
+        } else {
+            System.out.println(Constants.ROUND_NUMBER_MSG + roundNum);
+        }
+        System.out.println(Constants.TEXT_LINE_SEPARATOR);
+    }
+    
     public void playRound() throws QuitGameException {
+
         Symbol userSymbol = getUserSymbol();
         Symbol computerSymbol = computer.chooseSymbol();
         printChoices(userSymbol, computerSymbol);

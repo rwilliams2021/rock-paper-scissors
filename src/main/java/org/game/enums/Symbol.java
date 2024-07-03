@@ -1,9 +1,11 @@
 package org.game.enums;
 
+import org.game.constants.Constants;
+
 public enum Symbol {
-    PAPER("paper", "wraps"),
-    SCISSORS("scissors", "cuts"),
-    ROCK("rock", "blunts");
+    PAPER(Constants.PAPER, Constants.PAPER_WIN_ACTION),
+    SCISSORS(Constants.SCISSORS, Constants.SCISSORS_WIN_ACTION),
+    ROCK(Constants.ROCK, Constants.ROCK_WIN_ACTION);
 
     private final String symbol;
     private final String winAction;
