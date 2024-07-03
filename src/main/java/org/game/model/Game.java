@@ -6,24 +6,21 @@ import org.game.constants.Constants;
 import org.game.utils.InputUtil;
 
 public class Game {
-    private final Player computer;
-    private final Player user;
-    
-    public Game() {
-        computer = new Computer();
-        user = new User();
-    }
+    private final Player computer = new Computer();
+    private final Player user = new User();
+    private final Processor processor = Processor.getProcessor();
+    private final ScoreManager scoreManager = new ScoreManager();
     
     public void play() {
         welcome(user.getName());
         do {
-
             Symbol userSymbol = user.chooseSymbol();
             Symbol computerSymbol = computer.chooseSymbol();
             
-            System.out.println("You chose: " + userSymbol + '\n' + "Computer chose: " + computerSymbol);
+            System.out.println(Constants.USER_CHOICE + userSymbol + '\n' + Constants.COMPUTER_CHOICE + computerSymbol);
             
-            Outcome outcome = Processor.getProcessor().getWinner(userSymbol, computerSymbol);
+            Outcome outcome = processor.determineWinner(userSymbol, computerSymbol);
+            scoreManager.updateScore(outcome, computer, user);
             
             System.out.println(outcome.getMessage());
             
@@ -34,7 +31,7 @@ public class Game {
     }
     
     public void printScore() {
-        System.out.println(Processor.getProcessor().getScoreUpdate());
+        System.out.println(Constants.USER_WINS + user.getWins() + "\n" + Constants.COMPUTER_WINS + computer.getWins());
     }
     
     public void welcome(String name) {

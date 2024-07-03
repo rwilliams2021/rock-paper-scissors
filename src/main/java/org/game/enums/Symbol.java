@@ -1,5 +1,6 @@
 package org.game.enums;
 
+import org.game.constants.Constants;
 
 public enum Symbol {
     PAPER("paper"),
@@ -22,6 +23,6 @@ public enum Symbol {
                 return handSymbol;
             }
         }
-        return null;
+        throw new IllegalArgumentException(Constants.INVALID_SYMBOL_MSG);
     }
 }

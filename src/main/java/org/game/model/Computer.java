@@ -4,12 +4,7 @@ import org.game.enums.Symbol;
 
 import java.util.Random;
 
-public class Computer implements Player {
-    
-    @Override
-    public String getName() {
-        return "Computer";
-    }
+public class Computer extends Player {
     
     @Override
     public Symbol chooseSymbol() {

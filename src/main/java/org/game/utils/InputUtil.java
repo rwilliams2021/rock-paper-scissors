@@ -2,7 +2,7 @@ package org.game.utils;
 
 import java.util.Scanner;
 
-public class InputUtil {
+public final class InputUtil {
     private static final Scanner scanner = new Scanner(System.in);
     
     private InputUtil() {

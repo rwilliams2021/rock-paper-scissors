@@ -8,4 +8,9 @@ public class Constants {
     public static final String CHOOSE_SYMBOL_MSG = "Enter your choice: rock, paper or scissors?";
     public static final String INVALID_SYMBOL_MSG = "Invalid choice. Only 'rock', 'paper' and 'scissors' are allowed.";
     public static final String GOODBYE_MSG = "Thank you for playing. Goodbye!";
+    public static final String INVALID_INPUT_MSG = "Invalid input. Please try again.";
+    public static final String USER_WINS = "Your score: ";
+    public static final String COMPUTER_WINS = "Computer score: ";
+    public static final String USER_CHOICE = "You chose: ";
+    public static final String COMPUTER_CHOICE = "Computer chose: ";
 }
