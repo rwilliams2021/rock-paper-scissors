@@ -11,6 +11,10 @@ import org.game.view.ScannerInputProvider;
 
 import java.util.Scanner;
 
+
+/**
+ * Main class to start the Rock-Paper-Scissors game.
+ */
 public class Main {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
@@ -19,6 +23,7 @@ public class Main {
             Player computer = PlayerFactory.createPlayer(Constants.COMPUTER, null);
             Game game = new Game(scannerInputProvider, computer, user, new Processor(), new ScoreManager());
             
+            // Start the game using the GameManager
             GameManager.getInstance().startGame(game);
         }
     }
