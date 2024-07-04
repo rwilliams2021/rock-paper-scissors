@@ -62,7 +62,7 @@ public class Game {
         printChoices(userSymbol, computerSymbol);
         
         Outcome outcome = determineOutcome(userSymbol, computerSymbol);
-        printResult(outcome, userSymbol, computerSymbol);
+        printOutcome(outcome, userSymbol, computerSymbol);
         
         scoreManager.updateScore(outcome, computer, user);
         printScore();
@@ -76,24 +76,14 @@ public class Game {
      * @param userSymbol The user's chosen symbol.
      * @param computerSymbol The computer's chosen symbol.
      */
-    private void printResult(Outcome outcome, Symbol userSymbol, Symbol computerSymbol) {
-        switch (outcome) {
-            case USER_WIN:
-                System.out.println(userSymbol.getSymbol() +
-                                   " " +
-                                   Symbol.getWinAction(userSymbol) +
-                                   " " +
-                                   computerSymbol.getSymbol());
-                break;
-            case COMPUTER_WIN:
-                System.out.println(computerSymbol.getSymbol() +
-                                   " " +
-                                   Symbol.getWinAction(computerSymbol) +
-                                   " " +
-                                   userSymbol.getSymbol());
-                break;
-            default:
-                break;
+    public void printOutcome(Outcome outcome, Symbol userSymbol, Symbol computerSymbol) {
+        String result = switch (outcome) {
+            case USER_WIN -> userSymbol.getSymbol() + " " + Symbol.getWinAction(userSymbol) + " " + computerSymbol.getSymbol();
+            case COMPUTER_WIN -> computerSymbol.getSymbol() + " " + Symbol.getWinAction(computerSymbol) + " " + userSymbol.getSymbol();
+            default -> null;
+        };
+        if (result != null) {
+            System.out.println(result);
         }
         System.out.println(outcome.getMessage());
     }
