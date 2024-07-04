@@ -9,9 +9,10 @@ import java.util.Random;
  */
 public class RandomChooseStrategy implements ChooseStrategy {
     
+    private final Random random = new Random();
+    
     @Override
     public Symbol chooseSymbol() {
-        Random random = new Random();
         Symbol[] symbols = Symbol.values();
         int index = random.nextInt(symbols.length);
         return symbols[index];
