@@ -14,7 +14,7 @@ public class User extends Player {
     
     public User(InputProvider inputProvider) {
         this.inputProvider = inputProvider;
-        name = inputProvider.getInput(MessageConstants.ENTER_NAME_MSG);
+        name = inputProvider.getInput(MessageConstants.ENTER_NAME_MSG).trim();
     }
     
     @Override
