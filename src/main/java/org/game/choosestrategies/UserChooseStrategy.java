@@ -20,7 +20,7 @@ public class UserChooseStrategy implements ChooseStrategy {
     public Symbol chooseSymbol() {
         Symbol userSymbol = null;
         while (userSymbol == null) {
-            String userChoice = inputProvider.getInput(MessageConstants.CHOOSE_SYMBOL_MSG);
+            String userChoice = inputProvider.getInput(MessageConstants.CHOOSE_SYMBOL_MSG).trim();
             if (userChoice.equalsIgnoreCase(SymbolConstants.QUIT)) {
                 return null;
             }
