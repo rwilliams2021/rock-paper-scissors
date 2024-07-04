@@ -122,7 +122,7 @@ public class Game {
         int numberOfGames;
         while (true) {
             try {
-                String input = inputProvider.getInput(MessageConstants.NUMBER_OF_GAMES_MSG);
+                String input = inputProvider.getInput(MessageConstants.NUMBER_OF_GAMES_MSG).trim();
                 numberOfGames = Integer.parseInt(input);
                 if (numberOfGames > 0) {
                     break;
