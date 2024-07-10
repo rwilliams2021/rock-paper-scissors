@@ -1,14 +1,12 @@
 package org.game.enums;
 
-import org.game.constants.SymbolConstants;
-
 /**
  * Enum representing the possible symbols in Rock-Paper-Scissors.
  */
 public enum Symbol {
-    PAPER(SymbolConstants.PAPER, SymbolConstants.PAPER_WIN_ACTION),
-    SCISSORS(SymbolConstants.SCISSORS, SymbolConstants.SCISSORS_WIN_ACTION),
-    ROCK(SymbolConstants.ROCK, SymbolConstants.ROCK_WIN_ACTION);
+    PAPER("paper", "wraps"),
+    SCISSORS("scissors", "cuts"),
+    ROCK("rock", "blunts");
 
     private final String symbol;
     private final String winAction;

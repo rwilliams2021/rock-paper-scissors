@@ -1,7 +1,6 @@
 package org.game.choosestrategies;
 
 import org.game.constants.MessageConstants;
-import org.game.constants.SymbolConstants;
 import org.game.enums.Symbol;
 import org.game.view.InputProvider;
 
@@ -21,7 +20,7 @@ public class UserChooseStrategy implements ChooseStrategy {
         Symbol userSymbol = null;
         while (userSymbol == null) {
             String userChoice = inputProvider.getInput(MessageConstants.CHOOSE_SYMBOL_MSG).trim();
-            if (userChoice.equalsIgnoreCase(SymbolConstants.QUIT)) {
+            if (userChoice.equalsIgnoreCase(MessageConstants.QUIT)) {
                 return null;
             }
             userSymbol = Symbol.fromStringSymbol(userChoice.toLowerCase());

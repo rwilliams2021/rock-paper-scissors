@@ -1,7 +1,6 @@
 package org.game;
 
 import org.game.constants.MessageConstants;
-import org.game.constants.SymbolConstants;
 import org.game.model.Game;
 import org.game.model.player.Player;
 import org.game.model.Processor;

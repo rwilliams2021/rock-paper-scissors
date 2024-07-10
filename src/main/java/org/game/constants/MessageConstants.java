@@ -17,4 +17,5 @@ public class MessageConstants {
     public static final String USER_NUM_WINS = "Your score: ";
     public static final String COMPUTER_NUM_WINS = "Computer score: ";
     public static final String GOODBYE_MSG = "Thank you for playing. Goodbye!";
+    public static final String QUIT = "q";
 }
