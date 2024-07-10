@@ -1,7 +1,6 @@
 package org.game;
 
 import org.game.constants.Constants;
-import org.game.controller.GameManager;
 import org.game.model.Game;
 import org.game.model.Processor;
 import org.game.model.ScoreManager;
@@ -22,9 +21,7 @@ public class Main {
             Player user = PlayerFactory.createPlayer(Constants.USER, scannerInputProvider);
             Player computer = PlayerFactory.createPlayer(Constants.COMPUTER, null);
             Game game = new Game(scannerInputProvider, computer, user, new Processor(), new ScoreManager());
-            
-            // Start the game using the GameManager
-            GameManager.getInstance().startGame(game);
+            game.play();
         }
     }
 }
