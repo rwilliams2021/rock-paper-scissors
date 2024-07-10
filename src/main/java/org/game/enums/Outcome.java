@@ -6,9 +6,9 @@ import org.game.constants.MessageConstants;
  * Enum representing the possible outcomes of a game round.
  */
 public enum Outcome {
-    USER_WIN(MessageConstants.USER_WIN_MSG),
-    COMPUTER_WIN(MessageConstants.COMPUTER_WINS_MSG),
-    DRAW(MessageConstants.DRAW_MSG);
+    USER_WIN("You win!"),
+    COMPUTER_WIN("Computer wins!"),
+    DRAW("It's a draw!");
     
     private final String message;
     
