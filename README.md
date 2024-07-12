@@ -18,7 +18,6 @@ to ensure a clean, maintainable, and extensible codebase.
 
 The following design patterns are used in this project:
 
-- **Singleton**: Ensures only one instance of the `GameManager` exists.
 - **Factory**: Creates instances of `Player` (either user or computer).
 - **Strategy**: Defines strategies for selecting the symbols (Rock, Paper, or Scissors).
 - **MVC (Model-View-Controller)**: Separates the game logic (Model), user input (View), 
