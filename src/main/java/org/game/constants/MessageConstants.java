@@ -1,6 +1,7 @@
 package org.game.constants;
 
 public class MessageConstants {
+    public static final String INVALID_PLAYER_TYPE_MSG = "Player type must be an instance of User. Received type: ";
     public static final String ENTER_NAME_MSG = "Enter your name: ";
     public static final String GREETING = "Hello, ";
     public static final String BEGIN_GAME_MSG = "Let's play Rock-Paper-Scissors!";

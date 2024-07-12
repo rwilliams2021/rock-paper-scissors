@@ -1,23 +1,24 @@
 package org.game;
 
 import org.game.constants.MessageConstants;
+import org.game.enums.Outcome;
+import org.game.enums.Symbol;
 import org.game.model.Game;
-import org.game.model.player.Player;
 import org.game.model.Processor;
 import org.game.model.ScoreManager;
+import org.game.model.player.Player;
+import org.game.model.player.User;
+import org.game.view.InputProvider;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import org.game.enums.Symbol;
-import org.game.enums.Outcome;
-import org.game.view.InputProvider;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for the Game class using Mockito for mocking dependencies.
@@ -38,7 +39,7 @@ public class GameTest {
     private Player computer;
     
     @Mock
-    private Player user;
+    private User user;
     
     @Mock
     private Processor processor;
@@ -133,5 +134,33 @@ public class GameTest {
         verify(computer, times(3)).chooseSymbol();
         verify(processor, times(3)).determineWinner(Symbol.ROCK, Symbol.SCISSORS);
         verify(scoreManager, times(3)).updateScore(Outcome.USER_WIN, computer, user);
+    }
+    
+    /**
+     * Tests the initialiseUser method. Ensures that the input provider and user's name are set correctly.
+     */
+    @Test
+    void testInitialiseUser() {
+        when(inputProvider.getInput(MessageConstants.ENTER_NAME_MSG)).thenReturn(USER_NAME);
+        
+        game.initialiseUser();
+        
+        verify(user, times(1)).setInputProvider(inputProvider);
+        verify(user, times(1)).setName(USER_NAME);
+    }
+    
+    /**
+     * Tests the initialiseUser method with an invalid player type.
+     */
+    @Test
+    void testInitialiseUserWithInvalidPlayerType() {
+        Player invalidPlayer = mock(Player.class);
+        
+        Game invalidGame = new Game(inputProvider, computer, invalidPlayer, processor, scoreManager);
+        
+        IllegalArgumentException exception =
+                Assertions.assertThrows(IllegalArgumentException.class, invalidGame::initialiseUser);
+        
+        assertEquals(MessageConstants.INVALID_PLAYER_TYPE_MSG + invalidPlayer.getClass(), exception.getMessage());
     }
 }

@@ -11,6 +11,13 @@ public class User extends Player {
     
     private InputProvider inputProvider;
     
+    public User(InputProvider inputProvider) {
+        this.inputProvider = inputProvider;
+    }
+    
+    public User() {
+    }
+    
     public void setInputProvider(InputProvider inputProvider) {
         this.inputProvider = inputProvider;
     }

@@ -24,7 +24,7 @@ public class UserTest {
     @BeforeEach
     public void setUp() {
         when(inputProvider.getInput(MessageConstants.ENTER_NAME_MSG)).thenReturn(USER_NAME);
-        user = new User();
+        user = new User(inputProvider);
     }
     
     /**

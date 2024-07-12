@@ -29,7 +29,7 @@ public class ScoreManagerTest {
         computer = new Computer();
         InputProvider inputProvider = mock(InputProvider.class);
         when(inputProvider.getInput(MessageConstants.ENTER_NAME_MSG)).thenReturn(USER_NAME);
-        user = new User();
+        user = new User(inputProvider);
     }
     
     /**

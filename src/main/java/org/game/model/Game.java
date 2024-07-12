@@ -29,7 +29,7 @@ public class Game {
      * Main game loop. Plays the specified number of rounds.
      */
     public void play() {
-        initialiseUser(inputProvider);
+        initialiseUser();
         welcome(user.getName());
         int numberOfRounds = getNumberOfRounds();
         for (int roundNum = 0; roundNum < numberOfRounds; roundNum++) {
@@ -41,12 +41,12 @@ public class Game {
         goodbye();
     }
     
-    private void initialiseUser(InputProvider inputProvider) {
+    public void initialiseUser() {
         if (user instanceof User u) {
             u.setInputProvider(inputProvider);
             user.setName(inputProvider.getInput(MessageConstants.ENTER_NAME_MSG).trim());
         } else {
-            throw new IllegalArgumentException("Player type must be an instance of User");
+            throw new IllegalArgumentException(MessageConstants.INVALID_PLAYER_TYPE_MSG + user.getClass());
         }
     }
     
