@@ -1,11 +1,10 @@
 package org.game;
 
-import org.game.constants.Constants;
 import org.game.constants.MessageConstants;
 import org.game.enums.Outcome;
+import org.game.model.ScoreManager;
 import org.game.model.player.Computer;
 import org.game.model.player.Player;
-import org.game.model.ScoreManager;
 import org.game.model.player.User;
 import org.game.view.InputProvider;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,7 +29,7 @@ public class ScoreManagerTest {
         computer = new Computer();
         InputProvider inputProvider = mock(InputProvider.class);
         when(inputProvider.getInput(MessageConstants.ENTER_NAME_MSG)).thenReturn(USER_NAME);
-        user = new User(inputProvider);
+        user = new User();
     }
     
     /**

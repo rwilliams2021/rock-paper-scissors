@@ -1,9 +1,10 @@
 package org.game.model;
 
 import org.game.constants.MessageConstants;
-import org.game.enums.Symbol;
 import org.game.enums.Outcome;
+import org.game.enums.Symbol;
 import org.game.model.player.Player;
+import org.game.model.player.User;
 import org.game.view.InputProvider;
 
 /**
@@ -28,6 +29,7 @@ public class Game {
      * Main game loop. Plays the specified number of rounds.
      */
     public void play() {
+        initialiseUser(inputProvider);
         welcome(user.getName());
         int numberOfRounds = getNumberOfRounds();
         for (int roundNum = 0; roundNum < numberOfRounds; roundNum++) {
@@ -37,6 +39,15 @@ public class Game {
             }
         }
         goodbye();
+    }
+    
+    private void initialiseUser(InputProvider inputProvider) {
+        if (user instanceof User u) {
+            u.setInputProvider(inputProvider);
+            user.setName(inputProvider.getInput(MessageConstants.ENTER_NAME_MSG).trim());
+        } else {
+            throw new IllegalArgumentException("Player type must be an instance of User");
+        }
     }
     
     private void printRoundMessage(int roundNum, int numberOfRounds) {
@@ -148,8 +159,6 @@ public class Game {
     
     /**
      * Prints a welcome message to the user.
-     *
-     * @param name The name of the user.
      */
     public void welcome(String name) {
         System.out.println(MessageConstants.GREETING + name);
